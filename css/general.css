@@ -1,0 +1,161 @@
+:root {
+    --checkers-board-image: url("michael-dziedzic-zqbTr1jwSxc-unsplash.jpg");
+    --chess-board-image: url(noita-digital-zcx5ztIjQAM-unsplash.jpg);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-transform: capitalize;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(15rem, 20vw) auto;
+    grid-template-rows: 10vh 90vh 20%;
+    grid-template-areas: "header header""aside main""footer footer";
+    position: relative;
+    margin: 0 1rem;
+}
+
+.container>* {
+    border: 1px solid black;
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav button {
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin: 0 1rem;
+}
+
+footer {
+    grid-area: footer;
+}
+
+aside {
+    grid-area: aside;
+}
+
+main {
+    grid-area: main;
+    display: grid;
+    place-items: center;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 920px) {
+    .container {
+        grid-template-columns: auto;
+        grid-template-rows: 10vh auto 10vh auto;
+        grid-template-areas: "header ""main"" aside"" footer";
+    }
+    aside {
+        display: none;
+    }
+}
+
+
+/* 
+////////////////
+//////////////////
+//////////////// */
+
+input[name='practice-mode']:checked+#practice-mode-block {
+    display: block;
+}
+
+#practice-mode-block {
+    display: none;
+}
+
+input[name='practice-mode'],
+input[name='default-mode'] {
+    visibility: hidden;
+}
+
+aside input {
+    display: none;
+}
+
+aside label {
+    border-radius: 1rem;
+    padding: 0.5rem;
+    border: 2px solid yellow;
+    margin: 0 1rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    cursor: pointer;
+}
+
+aside label:has([name='delete-mode']) {
+    border-color: red;
+    margin: 1rem 2rem;
+}
+
+aside label:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+aside label:has(input[name='delete-mode']):checked {
+    background-color: rgba(93, 14, 14, 0.7);
+}
+
+aside label:has(input:checked) {
+    background-color: rgba(20, 187, 126, 0.6);
+    color: wheat;
+}
+
+aside button {
+    width: 100%;
+    padding: 1rem;
+}
+
+#practice-mode-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 3px;
+}
+
+#practice-mode-block div {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-around;
+}
+
+#practice-mode-block div label {
+    border-color: white;
+}
+
+#practice-mode-block div label:has(input:checked) {
+    background-color: rgba(31, 62, 77, 0.6);
+}
+
+#inner-board.practice-mode .brick {
+    cursor: crosshair;
+}
+
+#inner-board.practice-mode .brick:hover {
+    cursor: crosshair;
+}
+
+#inner-board.practice-mode {
+    cursor: crosshair;
+}

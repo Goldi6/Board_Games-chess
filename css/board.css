@@ -1,0 +1,395 @@
+:root {
+    --chess-unicode: "\265A";
+    --chess-piece-color-black: red;
+    --chess-piece-color-white: rgb(125, 110, 110);
+}
+
+#checkers-gameSpace {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(auto, 85%) auto;
+    grid-template-rows: minmax(auto, 5rem) auto;
+    grid-template-areas: "heading startBtn""boardBlock options";
+    place-items: center;
+}
+
+#start-game-btn {
+    grid-area: startBtn;
+    letter-spacing: 0.25rem;
+    font-size: large;
+    padding: 0.5rem 1rem;
+}
+
+#checkers-gameSpace>h2 {
+    text-align: center;
+    grid-area: heading;
+}
+
+aside,
+.board,
+.options,
+.options h3,
+#game-buttons button {
+    box-shadow: inset 0 0 50px 20px rgba(41, 41, 26, 0.5);
+    background-image: var(--checkers-board-image);
+    background-size: cover;
+    outline: rgb(0, 0, 0) 1px dotted;
+    border: 3px dotted #333;
+    border-radius: 0.5rem;
+}
+
+.board {
+    display: grid;
+    background-color: rgb(152, 93, 22);
+    grid-template-columns: 2rem auto 2rem;
+    grid-template-rows: 2rem auto 2rem;
+    grid-template-areas: ". row .""col board ."". . .";
+    align-content: stretch;
+    justify-content: stretch;
+    grid-area: boardBlock;
+    min-height: 85%;
+    aspect-ratio: 1;
+    user-select: none;
+    position: relative;
+    margin: 0 !important;
+    padding: 0;
+}
+
+
+/* #region board */
+
+#inner-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-area: board;
+    box-shadow: 0 0 10px -1px rgb(97, 76, 46), 0 0 30px 13px #000;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+
+/* helper: .num */
+
+.num {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: small;
+    color: yellow;
+}
+
+.brick {
+    aspect-ratio: 1;
+    box-shadow: inset 0 0 15px 5px rgba(69, 42, 22, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.stripe {
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.stripe>div {
+    display: grid;
+    place-items: center;
+    color: white;
+}
+
+.stripe-row {
+    grid-area: row;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.stripe-col {
+    grid-area: col;
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.white-brick {
+    background-color: #fff;
+}
+
+.black-brick {
+    background-color: black;
+}
+
+
+/* #endregion */
+
+
+/* #region checker */
+
+.checker {
+    border-radius: 50%;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+}
+
+
+/* #endregion */
+
+
+/* #region oprions aside */
+
+.options {
+    grid-area: options;
+    padding: 1rem;
+    position: relative;
+    /* top: -15%; */
+    color: rgb(218, 207, 207);
+    user-select: none;
+}
+
+#game-buttons {
+    margin-top: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+#game-buttons button {
+    /* background-color: transparent; */
+    color: white;
+    border: 2px solid white;
+    padding: 0.5rem 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    background-image: unset;
+    /* backdrop-filter: blur(15%); */
+    background-color: rgba(41, 41, 26, 0.5);
+    cursor: pointer;
+    /* margin: 0.5rem 0; */
+    flex: 1 1 0;
+}
+
+#game-buttons button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#game-buttons button:active {
+    background-color: rgba(129, 123, 123, 0.5);
+}
+
+.options h3 {
+    letter-spacing: 0.2rem;
+    text-align: center;
+    border: 1px solid white;
+}
+
+.player-count p,
+.stripe {
+    text-shadow: 1px 1px 1px rgb(159, 169, 31);
+}
+
+.options hr {
+    box-shadow: 1px 1px 1px rgb(159, 169, 31);
+}
+
+.player-count {
+    /* text-align: center; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: fit-content(100%) fit-content(100%);
+    grid-template-areas: "player player""count timer";
+}
+
+.player-count h4 {
+    grid-area: player;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    border-bottom: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: small;
+}
+
+.player-count .count {
+    grid-area: count;
+}
+
+.player-count .timer {
+    grid-area: timer;
+}
+
+.player-count p {
+    text-decoration: underline;
+}
+
+.player-count span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#inner-board.delete-mode .brick {
+    position: relative;
+}
+
+#inner-board.delete-mode .brick:hover:before {
+    content: "";
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    background-color: yellow;
+    transform: rotate(45deg);
+    z-index: 100;
+}
+
+#inner-board.delete-mode .brick:hover:after {
+    content: "";
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    background-color: yellow;
+    transform: rotate(-45deg);
+}
+
+#inner-board.practice-mode .brick:hover:before {
+    content: var(--chess-unicode);
+    position: absolute;
+    width: auto;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--chess-piece-color-black);
+}
+
+
+/* #endregion */
+
+@media screen and (max-width: 720px) {
+    .chess-piece {
+        font-size: 1.2rem !important;
+    }
+    #checkers-gameSpace {
+        width: 80vw !important;
+    }
+    .player-count span {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 720px) and (max-width: 921px) {
+    .chess-piece {
+        font-size: 2rem !important;
+    }
+    .player-count h4 {
+        font-size: medium;
+    }
+    .player-count h4 {
+        line-height: 1.75rem;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .options {
+        top: unset;
+    }
+    .board {
+        background-color: rgb(80, 80, 50);
+        grid-template-columns: 1.25rem auto 1.25rem;
+        grid-template-rows: 1.25rem auto 1.25rem;
+        grid-template-areas: ". row .""col board ."". . .";
+        font-size: 0.8rem;
+        min-height: unset;
+        width: 70%;
+        margin: 3rem;
+    }
+    #checkers-gameSpace {
+        grid-template-rows: fit-content(100%) fit-content(100%) auto;
+        grid-template-areas: "heading""options""boardBlock""startBtn";
+        grid-template-columns: 100%;
+        gap: 0.75rem;
+    }
+    /*
+    .options>div {
+        display: inline-block
+    }
+    */
+    .options {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: fit-content(100%) auto;
+        grid-template-areas: "h3 h3 h3""red btns white";
+    }
+    #count-red {
+        grid-area: red;
+    }
+    #count-white {
+        grid-area: white;
+    }
+    #game-buttons {
+        grid-area: btns;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin: 0 1rem;
+    }
+    .options h3 {
+        grid-area: h3;
+    }
+    /* ///////// OLD*/
+}
+
+@media (max-width: 920px) {
+    .board {
+        width: 100%;
+    }
+    #checkers-gameSpace {
+        width: 80vw !important;
+    }
+    .options hr {
+        display: none;
+    }
+    .options h3 {
+        margin: 0 !important;
+        display: none;
+    }
+    .options {
+        grid-template-rows: auto auto auto;
+        grid-template-columns: 1fr;
+        grid-template-areas: "h3""red""white""btns";
+        width: 100%;
+    }
+    .player-count {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto !important;
+        grid-template-areas: "player count timer";
+        border-bottom: 1px solid white;
+        border-top: 1px solid white;
+    }
+    .player-count p {
+        display: none;
+    }
+    .player-count div {
+        text-align: center;
+    }
+    .player-count .count,
+    .player-count h4 {
+        border-right: 1px solid white;
+    }
+    .player-count h4 {
+        margin: 0 !important;
+        border-bottom: none;
+    }
+    #game-buttons {
+        flex-direction: row;
+        margin-top: 1rem;
+    }
+    #game-buttons button {
+        padding: 0.25rem 0.5rem;
+    }
+    #main-game-header {
+        display: none;
+    }
+}

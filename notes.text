@@ -1,0 +1,33 @@
+board building:
+    board starts from 11 to 88; ColRow ; A1 to H8;
+    as for 1-64; FIXME: white start from 1 and black from 64 ; use obj as key val ,not array
+
+* class board: 
+        
+
+back start writing as console game;
+afterwards work of the front;
+
+back: get game inp: updateBoard;history;
+front: calc game inp: getInp,setInp,makeMove
+
+
+
+-*-
+dsfsf
+sdf
+* xxx
+[xxx]
+Part I.
+Section A
+Page 1
+A. 
+1. 
+一 xx
+甲. xxx
+第一章 xxx
+第2回 xxx
+第 3 节 xxx
+...
+    A   B   C   D   E   F   G   H
+1   BK  NK  BG  GT  ER  ER  ER  ER

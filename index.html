@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess</title>
+    <link rel="icon" href="svg-figures/chess.png" type="image/icon type">
+
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav><button>Checkers</button><button>Chess</button></nav>
+        </header>
+
+        <aside>
+            <button id="startRegularMode">Regular board</button><br>
+            <button id="startPracticeMode">Custom board</button>
+            <!-- <div id="auto-games-block">
+                <button id="fools-checkmate">Fools Checkmate</button>
+            </div> -->
+
+            <br>
+            <input type="checkbox" name="practice-mode">
+            <input type="checkbox" name="default-mode">
+            <div id="practice-mode-block">
+                <div>
+
+                    <label><input type="radio" checked name="color" value="black" id="">black</label>
+                    <label><input type="radio" name="color" value="white" id="">white</label>
+                </div>
+                <label><input type="radio" name="figure" value="pawn" id=""><span></span>pawn</label>
+                <label><input type="radio" name="figure" value="rook" id=""><span></span>rook</label>
+                <label><input type="radio" name="figure" value="knight" id=""><span></span>knight</label>
+                <label><input type="radio" name="figure" value="bishop" id=""><span></span>bishop</label>
+                <label><input type="radio" name="figure" value="queen" id=""><span></span>queen</label>
+                <label><input type="radio" name="figure" checked value="king"><span></span>king</label>
+                <label><input type="checkbox" name="delete-mode" id="">DeleteMode</label>
+                <button id="start-practice">Start practice</button>
+                <button id="clear-btn">clear</button>
+                <button disabled id="reverse-board">reverse board</button>
+
+            </div>
+        </aside>
+        <main>
+            <div id="checkers-gameSpace">
+                <button id="start-game-btn">Start Game</button>
+                <div class="options">
+                    <h3>Count</h3>
+                    <div class="player-count" id="count-red">
+                        <h4>RED</h4>
+                        <div class="count">
+                            <p>RED</p>
+                            <span>
+                                0
+                            </span>
+                        </div>
+                        <div class="timer">
+                            <p>Timer</p>
+                            <span>
+                                0
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="player-count" id="count-white">
+                        <h4>WHITE</h4>
+                        <div class="count">
+                            <p>WHITE</p>
+                            <span>
+                                0
+                            </span>
+                        </div>
+                        <div class="timer">
+                            <p>Timer</p>
+                            <span>
+                                0
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div id="game-buttons">
+                        <button id="resign-btn">Resign</button>
+                        <button id="draw-btn">Draw</button>
+                    </div>
+                </div>
+                <h2 id="main-game-header">Chess</h2>
+                <div class="board">
+                    <p id="hint"></p>
+                    <div class="stripe stripe-row">
+                    </div>
+                    <div class=" stripe stripe-col">
+                    </div>
+                    <div id="inner-board">
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+
+    </div>
+    <script src="general/setFilePath.js"></script>
+    <script src="js/interface.js"></script>
+    <script src="js/messagesClass.js"></script>
+    <script src="js/ClassClonableBoard.js"></script>
+
+    <script src="js/pieces.js"></script>
+    <script src="js/gameplay.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/testGames.js"></script>
+
+</body>
+
+</html>
