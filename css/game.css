@@ -94,6 +94,7 @@
 
 #started-msg {
     grid-area: startBtn;
+    margin: 0;
 }
 
 .brick.selected {
@@ -117,6 +118,9 @@
 #inner-board .brick:hover {
     cursor: pointer;
 }
+
+
+/* ////////// */
 
 #pawn-upgrade-box {
     position: absolute;
@@ -150,6 +154,9 @@
     border: 1px solid black;
     cursor: pointer;
 }
+
+
+/* ///////// */
 
 #select-modal {
     position: fixed;

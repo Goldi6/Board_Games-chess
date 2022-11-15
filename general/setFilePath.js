@@ -1,4 +1,10 @@
-const StyleFiles = ["general.css", "board.css", "game.css", "chat.css"];
+const StyleFiles = [
+    "general.css",
+    "aside.css",
+    "board.css",
+    "game.css",
+    "chat.css",
+];
 const ScriptFiles = ["interface.js", "pieces.js", "gameplay.js", "script.js"];
 
 const CSS_PATH = "css/";

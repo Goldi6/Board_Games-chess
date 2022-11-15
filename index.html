@@ -16,35 +16,43 @@
 <body>
     <div class="container">
         <header>
+            <div class="logo">
+                Board Games
+            </div>
             <nav><button>Checkers</button><button>Chess</button></nav>
         </header>
 
         <aside>
-            <button id="startRegularMode">Regular board</button><br>
-            <button id="startPracticeMode">Custom board</button>
-            <!-- <div id="auto-games-block">
-                <button id="fools-checkmate">Fools Checkmate</button>
-            </div> -->
-
-            <br>
-            <input type="checkbox" name="practice-mode">
-            <input type="checkbox" name="default-mode">
+            <div class="aside-buttons">
+                <button id="startRegularMode">Regular board</button><br>
+                <button id="startPracticeMode">Custom board</button>
+                <!-- <div id="auto-games-block">
+                    <button id="fools-checkmate">Fools Checkmate</button>
+                </div> -->
+                <br>
+                <input type="checkbox" name="practice-mode">
+                <input type="checkbox" name="default-mode">
+            </div>
             <div id="practice-mode-block">
-                <div>
+                <div class="color-selection-block">
 
                     <label><input type="radio" checked name="color" value="black" id="">black</label>
                     <label><input type="radio" name="color" value="white" id="">white</label>
                 </div>
-                <label><input type="radio" name="figure" value="pawn" id=""><span></span>pawn</label>
-                <label><input type="radio" name="figure" value="rook" id=""><span></span>rook</label>
-                <label><input type="radio" name="figure" value="knight" id=""><span></span>knight</label>
-                <label><input type="radio" name="figure" value="bishop" id=""><span></span>bishop</label>
-                <label><input type="radio" name="figure" value="queen" id=""><span></span>queen</label>
-                <label><input type="radio" name="figure" checked value="king"><span></span>king</label>
-                <label><input type="checkbox" name="delete-mode" id="">DeleteMode</label>
-                <button id="start-practice">Start practice</button>
-                <button id="clear-btn">clear</button>
-                <button disabled id="reverse-board">reverse board</button>
+
+                <div class="radio-selection-block">
+                    <label><input type="radio" name="figure" value="pawn" id=""><span></span>pawn</label>
+                    <label><input type="radio" name="figure" value="rook" id=""><span></span>rook</label>
+                    <label><input type="radio" name="figure" value="knight" id=""><span></span>knight</label>
+                    <label><input type="radio" name="figure" value="bishop" id=""><span></span>bishop</label>
+                    <label><input type="radio" name="figure" value="queen" id=""><span></span>queen</label>
+                    <label><input type="radio" name="figure" checked value="king"><span></span>king</label>
+                    <label><input type="checkbox" name="delete-mode" id="">DeleteMode</label>
+                </div>
+                <div class="action-selection-block">
+                    <button id="clear-btn">clear</button>
+                    <button disabled id="reverse-board">reverse board</button>
+                </div>
 
             </div>
         </aside>

@@ -145,6 +145,7 @@ aside,
     /* top: -15%; */
     color: rgb(218, 207, 207);
     user-select: none;
+    display: none;
 }
 
 #game-buttons {
@@ -232,23 +233,22 @@ aside,
     position: relative;
 }
 
-#inner-board.delete-mode .brick:hover:before {
-    content: "";
-    width: 3px;
-    height: 100%;
-    position: absolute;
-    background-color: yellow;
-    transform: rotate(45deg);
-    z-index: 100;
-}
-
+#inner-board.delete-mode .brick:hover:before,
 #inner-board.delete-mode .brick:hover:after {
     content: "";
     width: 3px;
     height: 100%;
     position: absolute;
     background-color: yellow;
+    z-index: 100;
+}
+
+#inner-board.delete-mode .brick:hover:after {
     transform: rotate(-45deg);
+}
+
+#inner-board.delete-mode .brick:hover:before {
+    transform: rotate(45deg);
 }
 
 #inner-board.practice-mode .brick:hover:before {
@@ -271,7 +271,7 @@ aside,
         font-size: 1.2rem !important;
     }
     #checkers-gameSpace {
-        width: 80vw !important;
+        width: 90vw !important;
     }
     .player-count span {
         font-size: 1rem;
@@ -287,6 +287,9 @@ aside,
     }
     .player-count h4 {
         line-height: 1.75rem;
+    }
+    #checkers-gameSpace {
+        width: 80vw !important;
     }
 }
 
@@ -305,8 +308,8 @@ aside,
         margin: 3rem;
     }
     #checkers-gameSpace {
-        grid-template-rows: fit-content(100%) fit-content(100%) auto;
-        grid-template-areas: "heading""options""boardBlock""startBtn";
+        grid-template-rows: fit-content(100%) auto fit-content(100%);
+        grid-template-areas: "heading""startBtn""boardBlock""options";
         grid-template-columns: 100%;
         gap: 0.75rem;
     }
@@ -316,7 +319,7 @@ aside,
     }
     */
     .options {
-        display: grid;
+        display: none;
         grid-template-columns: 1fr auto 1fr;
         grid-template-rows: fit-content(100%) auto;
         grid-template-areas: "h3 h3 h3""red btns white";
@@ -343,9 +346,6 @@ aside,
 @media (max-width: 920px) {
     .board {
         width: 100%;
-    }
-    #checkers-gameSpace {
-        width: 80vw !important;
     }
     .options hr {
         display: none;

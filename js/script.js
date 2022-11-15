@@ -233,8 +233,6 @@ SET_PRACTICE_BOARD_CREATOR_btn.addEventListener("click", (e) => {
     showStartGameBtn();
 
     //////////////
-    let color = "black";
-    let fig = "pawn";
 
     const ColorCheckBoxes = document.querySelectorAll("input[name='color']");
 
@@ -282,6 +280,8 @@ START_GAME_Btn.addEventListener("click", (e) => {
     Copy_CUSTOM_BOARD_Obj = CUSTOM_BOARD_Obj.setDuplicateBoard(
         new CustomChessGameGenerator()
     );
+    //
+    console.log(CUSTOM_BOARD_Obj);
     ///
     let boardObj;
     if (
@@ -302,6 +302,9 @@ START_GAME_Btn.addEventListener("click", (e) => {
         setEndGameConfirmationBtn(boardObj, confirmDrawModal, DRAW_Btn);
         setEndGameConfirmationBtn(boardObj, confirmResignModal, RESIGN_Btn);
         //
+        let options = document.getElementsByClassName("options")[0];
+        //        console.log(options);
+        options.style.display = "grid";
         //
         BOARD_Block.className = "gamePlay";
         ////////////////////
@@ -529,7 +532,8 @@ function displayEndGame() {
     remove_hightLightSelectedFigure();
     let msgEl = document.getElementById("main-game-header");
     msgEl.innerHTML = "Game Ended!";
-
+    let options = document.getElementsByClassName("options")[0];
+    options.style.display = "none";
     //TODO add summary
 }
 //#endregion

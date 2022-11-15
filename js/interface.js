@@ -20,7 +20,7 @@ function generateBoardBricks(isWhiteView) {
         num.innerHTML = Math.abs(brickCount);
         num.classList.add("num");
         //NOTE: add numbering on the board
-        brick.appendChild(num);
+        //brick.appendChild(num);
         ////////////////
         brick.classList.add("brick");
         if (color) brick.classList.add("white-brick");
