@@ -2,6 +2,7 @@
     --chess-unicode: "\265A";
     --chess-piece-color-black: red;
     --chess-piece-color-white: rgb(125, 110, 110);
+    --chess-piece-color: red;
 }
 
 #checkers-gameSpace {
@@ -235,7 +236,7 @@ aside,
 
 #inner-board.delete-mode .brick:hover:before,
 #inner-board.delete-mode .brick:hover:after {
-    content: "";
+    content: '""';
     width: 3px;
     height: 100%;
     position: absolute;
@@ -260,7 +261,7 @@ aside,
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 2rem;
-    color: var(--chess-piece-color-black);
+    color: var(--chess-piece-color);
 }
 
 

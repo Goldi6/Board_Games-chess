@@ -34,14 +34,6 @@ class chessGameGenerator extends ChessBoardCloner {
         //no capture
     }
     threeFoldRepetition_() {
-        let h = this.boardHistory;
-        let stringH = [];
-        for (let i = 0; i < h.length; i++) {
-            stringH[i] = h[i].join();
-        }
-
-        //            console.log(stringH);
-
         function getMaxRepetitions(arr) {
             let lastIndx = arr.length - 1;
             let max = 0;
@@ -65,6 +57,14 @@ class chessGameGenerator extends ChessBoardCloner {
 
             if (a == b) return true;
         }
+
+        let h = this.boardHistory;
+        let stringH = [];
+        for (let i = 0; i < h.length; i++) {
+            stringH[i] = h[i].join();
+        }
+
+        //            console.log(stringH);
 
         let atLeast3Repetitions = false;
         if (h.length > 3) atLeast3Repetitions = getMaxRepetitions(stringH) >= 3;

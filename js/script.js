@@ -164,18 +164,26 @@ function removeTestModeListener() {
 //#region practice board ubicode funcs
 
 //FIXME: piece unicode on hover (setting unicode from script to root CSS doesn't work)
+let root = document.querySelector(":root");
 
-function setUni() {
+console.log(getComputedStyle(root).getPropertyValue("--chess-unicode"));
+
+function setUnicode() {
     color = document.querySelector("input[name='color']:checked").value;
     fig = document.querySelector("input[name='figure']:checked").value;
     let uni = getFigUnicode(fig, color);
     let root = document.querySelector(":root");
     console.log(uni);
     let convertedUni = unicode_decToHex(uni);
-    convertedUni = String.fromCharCode(parseInt(convertedUni, 16));
+    //convertedUni = String.fromCharCode(parseInt(convertedUni, 16));
+    console.log(color);
+    color = "black" == color ? "red" : "rgb(125, 110, 110)";
     root.style.setProperty("--chess-unicode", convertedUni);
+    root.style.setProperty("--chess-piece-color", color);
+
     //FIXME: unicode hover
     console.log(getComputedStyle(root).getPropertyValue("--chess-unicode"));
+    console.log(getComputedStyle(root).getPropertyValue("--chess-piece-color"));
 }
 
 function unicode_decToHex(val) {
@@ -183,29 +191,29 @@ function unicode_decToHex(val) {
     //   console.log(val);
     switch (val) {
         case "9817":
-            return "2659";
+            return '"\\2659"';
         case "9816":
-            return "2658";
+            return '"\\2658"';
         case "9815":
-            return "2657";
+            return '"\\2657"';
         case "9814":
-            return "2656";
+            return '"\\2656"';
         case "9813":
-            return "2655";
+            return '"\\2655"';
         case "9812":
-            return "2654";
+            return '"\\2654"';
         case "9823":
-            return "265F";
+            return '"\\265F"';
         case "9822":
-            return "265E";
+            return '"\\265E"';
         case "9821":
-            return "265D";
+            return '"\\265D"';
         case "9820":
-            return "265C";
+            return '"\\265C"';
         case "9819":
-            return "265B";
+            return '"\\265B"';
         case "9818":
-            return "265A";
+            return '"\\265A"';
     }
 }
 
@@ -237,13 +245,13 @@ SET_PRACTICE_BOARD_CREATOR_btn.addEventListener("click", (e) => {
     const ColorCheckBoxes = document.querySelectorAll("input[name='color']");
 
     ColorCheckBoxes.forEach((el) => {
-        el.addEventListener("change", setUni);
+        el.addEventListener("change", setUnicode);
     });
 
     const FigCheckBoxes = document.querySelectorAll("input[name='figure']");
 
     FigCheckBoxes.forEach((el) => {
-        el.addEventListener("change", setUni);
+        el.addEventListener("change", setUnicode);
 
         //
         //
@@ -369,7 +377,7 @@ function playGame(BOARD_OBJ, openingPlayer = "white") {
                                 BOARD_OBJ.availableCapturesToMake
                             );
                             if (BOARD_OBJ.availableCastlingToMake.length > 0) {
-                                availableMoves.concat(availableCastlingToMake);
+                                availableMoves.concat(BOARD_OBJ.availableCastlingToMake);
                             }
                             if (BOARD_OBJ.availableEnPassantToMake.length > 0) {
                                 availableMoves.concat(BOARD_OBJ.availableEnPassantToMake);
